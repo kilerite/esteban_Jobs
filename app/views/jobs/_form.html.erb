@@ -1,0 +1,32 @@
+<%= form_with(model: job) do |form| %>
+  <% if job.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(job.errors.count, "error") %> impidieron que este empleo se guardara:</h2>
+
+      <ul>
+        <% job.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, "Título", class: ["form-label"] %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image, "Imagen", class: ["form-label"] %>
+    <%= form.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, "Descripción", style: "display: block" %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Crear la Publicación de la Imagen", class: "btn btn-success w-100" %>
+  </div>
+<% end %>

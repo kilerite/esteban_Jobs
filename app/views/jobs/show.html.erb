@@ -1,0 +1,20 @@
+<div class="row py-5">
+    <h2 class="text-center">Solicitudes</h2>
+</div>
+
+<div class="row py-5">
+    <% @applies.each do |apply| %>
+        <div class="col-12">
+            <h4 class="text-center">Solicitud #<%= apply.id %></h4>
+            <p>Trabajo: <%= @job.title %> </p>
+            <p>Solicitante: <%= apply.user.name.to_s %></p>
+            <p>Estado: <%= apply.status %></p>
+            <p>Motivo para contratación: <%= apply.application %></p>
+            <%= link_to 'Modificar el estado de la solicitud', edit_apply_path(apply.id), class: 'btn btn-primary w-100' %>
+        </div>
+    <% end %>
+</div>
+
+<div class="row py-5">
+    <%= link_to "Volver", root_path %>
+</div>

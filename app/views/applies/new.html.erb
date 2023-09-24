@@ -1,0 +1,42 @@
+<div class="row py-5">
+    <h2 class="text-center">Nueva Solicitud</h2>
+</div>
+
+<div class="row py-5">
+
+    <% if @job.status.present? %>
+        <% if @job.active? %>
+
+        <div class="alert alert-success" role="alert">
+            La oportunidad laboral aún está en vigencia.
+        </div>
+
+        <% end %>
+        <% if @job.ended? %>
+
+        <div class="alert alert-danger" role="alert">
+            La oportunidad laboral ha finalizado.
+        </div>
+
+        <% end %>
+        <% if @job.error? %>
+
+        <div class="alert alert-warning" role="alert">
+            Ha habido problemas con la solicitud.
+        </div>
+
+        <% end %>
+    <% end %>
+
+    <h4 class="text-center"><%= "#{@job.title}" %></h4>
+    <p><%= "#{@job.description}" %></p>
+    <%= image_tag(@job.image.url, class: "img-class") %>
+</div>
+
+<div class="row py-5">
+    <%= render "form", apply: @apply %>
+</div>
+
+<div class="row py-5">
+    <%= link_to "Regresar", root_path %>
+</div>
